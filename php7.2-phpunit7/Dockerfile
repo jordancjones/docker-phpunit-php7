@@ -3,10 +3,11 @@ MAINTAINER Chris Allan <chris@allan.codes>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -yqq \
-    && apt-get install git zlib1g-dev libsqlite3-dev -y \
+    && apt-get install git zlib1g-dev libsqlite3-dev libpq-dev -y \
     && docker-php-ext-install zip \
     && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install pdo_sqlite
+    && docker-php-ext-install pdo_sqlite \
+    && docker-php-ext-install pdo_pgsql
 
 RUN curl -fsSL https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
