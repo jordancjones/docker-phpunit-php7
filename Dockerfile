@@ -15,9 +15,9 @@ RUN curl -fsSL https://getcomposer.org/installer | php \
     && composer global require phpunit/phpunit ^7.0 --no-progress --no-scripts --no-interaction
 
 #RUN pecl install xdebug \
-    && echo 'zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20170718/xdebug.so' > \
-        /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && php -m | grep xdebug
+#    && echo 'zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20170718/#xdebug.so' > \
+#        /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#    && php -m | grep xdebug
 
 ENV PATH /root/.composer/vendor/bin:$PATH
 CMD ["phpunit"]
