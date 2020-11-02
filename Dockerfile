@@ -4,7 +4,7 @@ MAINTAINER Emmett Culley <eculley@ccctechcenter.org
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -yqq \
-    && apt-get install git zlib1g-dev libsqlite3-dev libpq-dev -y \
+    && apt-get install git libzip zlib1g-dev libsqlite3-dev libpq-dev -y \
     && docker-php-ext-install zip \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install pdo_sqlite \
