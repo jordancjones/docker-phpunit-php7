@@ -1,9 +1,10 @@
-FROM php:7.2-cli
-MAINTAINER Chris Allan <chris@allan.codes>
+FROM php:7.3-cli
+MAINTAINER Emmett Culley <eculley@ccctechcenter.org
+
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -yqq \
-    && apt-get install git zlib1g-dev libsqlite3-dev libpq-dev -y \
+    && apt-get install git libzip-dev zlib1g-dev libsqlite3-dev libpq-dev -y \
     && docker-php-ext-install zip \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install pdo_sqlite \
@@ -14,8 +15,8 @@ RUN curl -fsSL https://getcomposer.org/installer | php \
     && composer global require phpunit/phpunit ^7.0 --no-progress --no-scripts --no-interaction
 
 RUN pecl install xdebug \
-    && echo 'zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20170718/xdebug.so' > \
-        /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo 'zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20180731/xdebug.so' > \
+    /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && php -m | grep xdebug
 
 ENV PATH /root/.composer/vendor/bin:$PATH
