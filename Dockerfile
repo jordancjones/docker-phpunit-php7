@@ -20,4 +20,5 @@ RUN pecl install xdebug \
     && php -m | grep xdebug
 
 ENV PATH /root/.composer/vendor/bin:$PATH
-CMD ["phpunit"]
+
+CMD ["phpunit", "--version"]
